@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <a-assets>
+        <audio id="reggae" src="Assets/Bob Marley - Is This Love.mp3"></audio>
+        <audio id="ingles" src="Assets/Tracy Chapman - Fast Car (Lyrics).mp3"></audio>
+        <audio id="rock" src="Assets/Guns N' Roses - Welcome To The Jungle (lyrics).mp3"></audio>
+        <audio id="standing" src="Assets/Elton John - I'm Still Standing (Lyrics).mp3"></audio>
+        <img id="sky" src="Assets/sky.jpg">
+        <a-asset-item id="scene1" src="Assets/scene1.gltf"></a-asset-item>
+      </a-assets>
+      <a-sky src="#sky" material="repeat: 1 1;"></a-sky>
+      <a-entity>
+        <a-camera>
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+
+      <a-entity gltf-model="#scene1"></a-entity>
+      <a-plane material="color: green" rotation ="-90 0 0" position=" 0 -2 0" scale = "100 100 0"></a-plane>
+
+      <!-- Triángulo -->
+      <a-entity id="boton1" geometry="primitive: box;" material="color: yellow;" position="-10 4.6 -7.5" rotation="0 3 0" scale="0.1"></a-entity>
+      <a-entity id="boton2" geometry="primitive: box;" material="color: purple;" position="6.7 4.6 9" rotation="0 2 0" scale="0.1"></a-entity>
+      <a-entity id="boton3" geometry="primitive: box;" material="color: white;" position="6.5 4.6 -7.8" rotation="0 92 0" scale="0.1"></a-entity>
+      <a-entity id="boton4" geometry="primitive: box;" material="color: orange;" position="-10.2 4.6 8.6" rotation="0 92 0" scale="0.1"></a-entity>
+    
+    </a-scene> 
+  </body>
+</html>
+<script>
+  let stateBoton1 = 0
+  let stateBoton2 = 0
+  let stateBoton3 = 0
+  let stateBoton4 = 0
+
+  document.querySelector('#boton1').addEventListener('click', function () {
+    if(stateBoton1 === 0){
+      let cancion = document.querySelector('#reggae');
+      cancion.play();
+      stateBoton1 = 1; // Actualiza el estado del botón
+    }
+    else {
+      let cancion = document.querySelector('#reggae');
+      cancion.pause();
+      stateBoton1 = 0; // Actualiza el estado del botón
+    }
+    
+  });
+  
+  document.querySelector('#boton2').addEventListener('click', function () {
+    if(stateBoton2 === 0){
+      let cancion = document.querySelector('#rock');
+      cancion.play();
+      stateBoton2 = 1; // Actualiza el estado del botón
+    }
+    else {
+      let cancion = document.querySelector('#rock');
+      cancion.pause();
+      stateBoton2 = 0; // Actualiza el estado del botón
+    }
+  });
+  document.querySelector('#boton3').addEventListener('click', function () {
+    if(stateBoton3 === 0){
+      let cancion = document.querySelector('#standing');
+      cancion.play();
+      stateBoton3 = 1; // Actualiza el estado del botón
+    }
+    else {
+      let cancion = document.querySelector('#standing');
+      cancion.pause();
+      stateBoton3 = 0; // Actualiza el estado del botón
+    }
+  });
+  document.querySelector('#boton4').addEventListener('click', function () {
+    if(stateBoton4 === 0){
+      let cancion = document.querySelector('#ingles');
+      cancion.play();
+      stateBoton4 = 1; // Actualiza el estado del botón
+    }
+    else {
+      let cancion = document.querySelector('#ingles');
+      cancion.pause();
+      stateBoton4 = 0; // Actualiza el estado del botón
+    }
+  });   
+    
+</script>
